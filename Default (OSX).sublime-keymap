@@ -1,0 +1,6 @@
+[
+    {
+        "keys": ["super+shift+i"],
+        "command": "expand_selection_to_indent_scope"
+    }
+]
