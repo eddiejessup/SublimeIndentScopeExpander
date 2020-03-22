@@ -1,5 +1,5 @@
-import sublime
-import sublime_plugin
+import sublime  # pylint: disable=import-error
+import sublime_plugin  # pylint: disable=import-error
 
 def str_indentation(s):
     return len(s) - len(s.lstrip(' '))
@@ -16,11 +16,9 @@ def line_is_top_level(s):
 def line_is_nonempty_top_level(s):
     return not line_is_empty(s) and line_is_top_level(s)
 
-
 def last_row(view):
     (row, _) = view.rowcol(view.size())
     return row
-
 
 def pan_up_to_top_level(view, begin_point):
     (begin_row, _) = view.rowcol(begin_point)
@@ -40,11 +38,10 @@ def pan_up_to_top_level(view, begin_point):
         # Stop at an empty line after seeing a top-level declaration.
         if just_seen_top_level and line_is_empty(consider_line_str):
             return consider_row + 1
-        else:
-            just_seen_top_level = line_is_nonempty_top_level(consider_line_str)
-            consider_row -= 1
-            continue
 
+        just_seen_top_level = line_is_nonempty_top_level(consider_line_str)
+        consider_row -= 1
+        continue
 
 def pan_down_to_top_level(view, begin_point):
     (begin_row, _) = view.rowcol(begin_point)
@@ -72,12 +69,11 @@ def pan_down_to_top_level(view, begin_point):
             consider_row += 1
             continue
         # In normal behaviour, stop at the next top-level declaration.
-        elif line_is_nonempty_top_level(consider_line_str):
+        if line_is_nonempty_top_level(consider_line_str):
             return consider_row
-        else:
-            consider_row += 1
-            continue
 
+        consider_row += 1
+        continue
 
 def expand_region(view, region):
     begin_point = region.begin()
@@ -89,11 +85,9 @@ def expand_region(view, region):
     return sublime.Region(view.text_point(result_begin_row, 0),
                           view.text_point(result_end_row, 0))
 
-
-class ExpandSelectionToIndentScopeCommand(sublime_plugin.TextCommand):
-    def run(self, edit):
+class SelectBlockCommand(sublime_plugin.TextCommand):  # pylint: disable=too-few-public-methods
+    def run(self, _edit):
         selection = self.view.sel()
-        new_regions = list(map(lambda r: expand_region(self.view, r),
-                               selection))
+        new_regions = list(map(lambda r: expand_region(self.view, r), selection))
         selection.clear()
         selection.add_all(new_regions)

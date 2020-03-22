@@ -1,19 +1,19 @@
-# IndentScopeExpander
+# SelectBlock
 
 Expand a selection to the current top-level declaration, defined roughly as the
 enclosing lines around a selection, expanding upwards to the nearest
 non-indented line, and downwards to the next non-indented line.
 
-Intended as a 'expand selection to scope' command for languages that define
+Intended to 'select top-level declaration' command for languages that define
 scope by indentation, such as Python or Haskell.
 
-One command is provided, `expand_selection_to_indent_scope`. By default, this
-command can be triggered with `ctrl+shift+i` on Linux and Windows, and
-`cmd+shift+i` on MacOS.
+One command is provided, `select_block`. By default, this
+command can be triggered with `ctrl+shift+u` on Linux and Windows, and
+`cmd+shift+u` on MacOS.
 
 == License
 
-All of IndentScopeExpander is licensed under the MIT license.
+All of SelectBlock is licensed under the MIT license.
 
   Copyright (c) 2019 Elliot Marsden <elliot.marsden@gmail.com>
 

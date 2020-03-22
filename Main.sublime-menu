@@ -1,24 +1,31 @@
 [
     {
-        "caption": "Preferences",
-        "mnemonic": "n",
+        "id": "selection",
+        "children":
+            [
+                { "caption": "-" },
+                {
+                    "command": "select_block",
+                    "caption": "Select Block"
+                }
+            ]
+    },
+    {
         "id": "preferences",
         "children":
         [
             {
-                "caption": "Package Settings",
-                "mnemonic": "P",
                 "id": "package-settings",
                 "children":
                 [
                     {
-                        "caption": "IndentToScope",
+                        "caption": "SelectBlock",
                         "children":
                         [
                             {
                                 "command": "open_file",
                                 "args": {
-                                    "file": "${packages}/IndentToScope/Default (Windows).sublime-keymap",
+                                    "file": "${packages}/SelectBlock/Default (Windows).sublime-keymap",
                                     "platform": "Windows"
                                 },
                                 "caption": "Key Bindings – Default"
@@ -26,7 +33,7 @@
                             {
                                 "command": "open_file",
                                 "args": {
-                                    "file": "${packages}/IndentToScope/Default (OSX).sublime-keymap",
+                                    "file": "${packages}/SelectBlock/Default (OSX).sublime-keymap",
                                     "platform": "OSX"
                                 },
                                 "caption": "Key Bindings – Default"
@@ -34,7 +41,7 @@
                             {
                                 "command": "open_file",
                                 "args": {
-                                    "file": "${packages}/IndentToScope/Default (Linux).sublime-keymap",
+                                    "file": "${packages}/SelectBlock/Default (Linux).sublime-keymap",
                                     "platform": "Linux"
                                 },
                                 "caption": "Key Bindings – Default"
